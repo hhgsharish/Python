@@ -1,0 +1,45 @@
+import subprocess
+import logging
+
+logging.basicConfig(level=logging.INFO, format='| %(levelname)-15s | %(asctime)s | %(name)s | %(lineno)-4s | %(name)s ::  %(message)s')
+
+logger = logging.getLogger("test")
+
+# Define the command you want to execute
+command = [
+       'grep -rl "org" *',
+       'ls',
+       'pwd'
+       ]
+
+# Run the command
+#The stdout=subprocess.PIPE parameter captures the output of the command, which you can then access using result.stdout.
+for cmd in command:
+    result = subprocess.run(cmd, shell=True, check=True, text=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+  # Print the output
+    logger.info(result.stdout)
+    print(result.stderr, end='')
+
+
+==============================================================================
+
+class TestingExamples:
+    def __init__(self, pkg_name, version):
+        self.name = pkg_name
+        self.version = version
+
+    def check_artifact(self):
+        print(f"The package name is {self.name}")
+        print(f"THE version is {self.version}")
+
+    def print_combine(self):
+        print(f"The package name with version {self.name}:{self.version}")
+
+if __name__ == "__main__":
+
+    package = input("Enter the package Name\n")
+    version = input("ENter the version\n")
+    check = TestingExamples(package, version)
+
+    check.check_artifact()
+    check.print_combine()
