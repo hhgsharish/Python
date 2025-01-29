@@ -14,3 +14,5 @@ ec2 = boto3.resource("ec2")
 
 ec2.create_instances(ImageId=args.ami, InstanceType=args.type, KeyName=args.Key, MinCount=args.min, MaxCount=args.max)
 print("EC2 instance created")
+
+#Execute Statement:   python3 file2.py "ami-rhjkskjfdhkjsh" "t2.micro" pyuser1 1 1
